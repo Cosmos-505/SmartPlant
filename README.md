@@ -1,4 +1,4 @@
-# SmartPlant
+# SmartPlant 9000
 Smart watering system
 In the heart of a bustling city, where the rhythm of life beat amidst the concrete and glass, Chris found himself grappling with a familiar conundrum: the challenge of nurturing a verdant sanctuary within the confines of his urban abode. An aficionado of nature, Chris harbored a fervent desire to cultivate an indoor garden that thrived, yet the demands of his bustling life often left his leafy companions neglected and parched. Determined to cultivate a solution, he embarked on a journey that would culminate in the creation of something truly extraordinary – a smart plant waterer poised to revolutionize his gardening experience.
 
