@@ -126,15 +126,12 @@ waitFor(Serial.isConnected,10000);
 pinMode (sensorPin, INPUT);
 
 display.begin(SSD1306_SWITCHCAPVCC,0x3C);
-delay(2000);
 display.clearDisplay();
-
 display.setRotation(2);
-
 display.setTextSize(1);
 display.setTextColor(WHITE);
 display.setCursor(0,0);
-display.printf ("Hello world!\n Me llamo Se%cor Chris Cade.\n",0xA4);
+display.printf ("Hello world!\n Welcome to \n GROWING GREEN!");
 display.display();
 display.clearDisplay();
 
@@ -160,10 +157,12 @@ void loop()  {
 
 if (waterButtonPress == 1) {
   digitalWrite(WATERPIN,HIGH);
-  waterTimer.startTimer(500);
+  waterTimer.startTimer(3000);
 }
   if (waterTimer.isTimerReady()) {
     digitalWrite (WATERPIN,LOW);
+    display.begin(SSD1306_SWITCHCAPVCC,0x3C);
+    display.clearDisplay();
   }
   
   
@@ -185,7 +184,7 @@ display.clearDisplay();
 display.setTextSize(1);
 display.setTextColor(WHITE);
 display.setCursor(0,0);  
-display.printf ("Temperature is %0.1f %c\n",tempF,degree);
+display.printf ("Temperature is %0.1f\n",tempF);
 mqtttemp.publish(tempF);
 display.printf("Humidity is %0.1f\n", humidRH);
 mqttrHumidity.publish(humidRH);
@@ -236,12 +235,13 @@ airQ = airqualitysensor.getValue();
 
 
 //WATERPUMP AND RELAY
- if (moisture >= 2000) {
+ if (moisture <= 2000) {
   digitalWrite(WATERPIN,HIGH);
- moistureTimer.startTimer(500);
+ moistureTimer.startTimer(3000);
  }
   if (moistureTimer.isTimerReady()) {
     digitalWrite (WATERPIN,LOW);
+    display.begin(SSD1306_SWITCHCAPVCC,0x3C);
  }
  
 
@@ -255,22 +255,18 @@ Serial.printf (" Date and time is %s\n",DateTime.c_str ());
 Serial.printf (" Time is %s\n",TimeOnly.c_str ());
 
 
-
+//MOISTURE SENSOR
 moisture = analogRead(sensorPin);
 
 Serial.printf("Moisture content is %f\n", moisture);
-display.printf("Moisture content is %f\n", moisture);
+display.printf("Moisture content is\n %f\n", moisture);
 display.printf(" Date and time is %s\n",DateTime.c_str());
-display.printf(" Time is %s\n",TimeOnly.c_str());
 display.display();
 
 display.clearDisplay();
 display.setCursor(0,0);
 }
 }
-
-
-
 }
 
 
